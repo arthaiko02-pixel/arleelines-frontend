@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Arleelines — Международная логистика</title>
+<style>
+:root{--p:#0f1f3d;--a:#c9a84c;--bg:#080f1c;--card:#111e30;--t:#dde3ef;--g:#6b7a99;--er:#e74c3c}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',sans-serif;background:var(--bg);color:var(--t);min-height:100vh}
+header{background:var(--p);padding:0 40px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--a);position:sticky;top:0;z-index:100;box-shadow:0 4px 24px #0009}
+.logo{font-size:19px;font-weight:800;color:var(--a);letter-spacing:3px;cursor:pointer}
+nav a{color:var(--t);text-decoration:none;margin-left:24px;font-size:14px;opacity:.75;cursor:pointer;transition:.2s}
+nav a:hover{opacity:1;color:var(--a)}
+.page{display:none}.page.active{display:block}
+.hero{background:linear-gradient(150deg,#0d1e38,#080f1c);padding:96px 40px;text-align:center;border-bottom:1px solid #1a2d4a}
+.hero h1{font-size:54px;color:var(--a);margin-bottom:14px;letter-spacing:2px}
+.hero p{font-size:18px;color:var(--g);max-width:560px;margin:0 auto 40px;line-height:1.7}
+.btn{background:var(--a);color:#000;border:none;padding:14px 34px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;transition:.2s}
+.btn:hover{background:#debb6a;transform:translateY(-2px);box-shadow:0 8px 24px #c9a84c44}
+.btn-o{background:transparent;color:var(--a);border:2px solid var(--a);margin-left:14px}
+.btn-o:hover{background:var(--a);color:#000}
+.svcs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:56px 40px;max-width:1200px;margin:0 auto}
+.card{background:var(--card);border-radius:14px;padding:30px;border:1px solid #1a2d4a;transition:.25s}
+.card:hover{border-color:var(--a);transform:translateY(-4px);box-shadow:0 8px 28px #0005}
+.ci{font-size:34px;margin-bottom:12px}.card h3{color:var(--a);font-size:16px;margin-bottom:8px}
+.card p{color:var(--g);font-size:13px;line-height:1.7}
+.aw{max-width:420px;margin:72px auto;padding:0 20px}
+.ac{background:var(--card);border-radius:16px;padding:40px;border:1px solid #1a2d4a}
+.tabs{display:flex;margin-bottom:22px;border-bottom:1px solid #1a2d4a}
+.tab{padding:10px 20px;cursor:pointer;border-bottom:2px solid transparent;color:var(--g);font-size:14px;transition:.2s}
+.tab.active{border-bottom-color:var(--a);color:var(--t)}
+.fg{margin-bottom:13px}.fg label{display:block;margin-bottom:5px;color:var(--g);font-size:11px;text-transform:uppercase;letter-spacing:.5px}
+.fg input{width:100%;background:#080f1c;border:1px solid #1a2d4a;color:var(--t);padding:11px 13px;border-radius:7px;font-size:14px;outline:none;transition:.2s}
+.fg input:focus{border-color:var(--a)}
+.bf{width:100%;padding:13px;font-size:15px;margin-top:4px}
+.em{color:var(--er);font-size:12px;margin-top:6px;display:none}
+select{width:100%;background:#080f1c;border:1px solid #1a2d4a;color:var(--t);padding:11px 13px;border-radius:7px;font-size:14px;outline:none}
+select:focus{border-color:var(--a)}
+.dsh{max-width:1100px;margin:0 auto;padding:40px}
+.dh{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.dh h2{font-size:26px}.un{color:var(--g);font-size:14px}
+.oc{background:var(--card);border-radius:12px;padding:20px 26px;border:1px solid #1a2d4a;display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;transition:.2s}
+.oc:hover{border-color:#2a3d55}
+.ot{font-size:15px;margin-bottom:3px}.os{color:var(--g);font-size:12px}
+.badge{padding:4px 11px;border-radius:20px;font-size:11px;font-weight:700;text-transform:uppercase}
+.bb{background:#0d1e3d;color:#5b9bd5}
+.am{font-size:17px;font-weight:700;color:var(--a);margin-top:5px}
+.emp{text-align:center;padding:72px 20px;color:var(--g)}.ei{font-size:56px;margin-bottom:12px}
+.cw{max-width:640px;margin:40px auto;padding:0 20px}
+.cc{background:var(--card);border-radius:16px;padding:40px;border:1px solid #1a2d4a}
+.cc h2{margin-bottom:20px;font-size:22px}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.res{margin-top:20px;background:#080f1c;border-radius:12px;padding:22px;border:1px solid var(--a);display:none}
+.rm{font-size:34px;font-weight:800;color:var(--a)}
+.rd{color:var(--g);font-size:13px;margin-top:8px;line-height:1.8}
+.nw{max-width:960px;margin:0 auto;padding:40px}
+.nw h2{font-size:26px;margin-bottom:26px}
+.ng{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.nc{background:var(--card);border-radius:12px;padding:22px;border:1px solid #1a2d4a;cursor:pointer;transition:.2s}
+.nc:hover{border-color:var(--a)}
+.nd{color:var(--g);font-size:11px;margin-bottom:6px;text-transform:uppercase}
+.nc h3{font-size:15px;margin-bottom:7px;line-height:1.4}
+.nc p{color:var(--g);font-size:13px;line-height:1.6}
+.ld{text-align:center;padding:60px;color:var(--g)}
+footer{text-align:center;padding:36px;color:var(--g);font-size:13px;border-top:1px solid #1a2d4a;margin-top:60px}
+</style>
+</head>
+<body>
+<header>
+  <span class="logo" onclick="go('landing')">✈ ARLEELINES</span>
+  <nav>
+    <a onclick="go('landing')">Главная</a>
+    <a onclick="go('calculator')">Калькулятор</a>
+    <a onclick="go('news')">Новости</a>
+    <a id="al" onclick="go('auth')">Войти</a>
+    <a id="ac2" style="display:none" onclick="go('dashboard')">Кабинет</a>
+    <a id="ao" style="display:none;color:var(--er)" onclick="doOut()">Выйти</a>
+  </nav>
+</header>
+
+<div id="pg-landing" class="page active">
+  <div class="hero">
+    <h1>✈ ARLEELINES</h1>
+    <p>Международная авиа и автологистика. Китай, Европа, США — под ключ с таможней и отслеживанием.</p>
+    <button class="btn" onclick="go('calculator')">Рассчитать доставку</button>
+    <button class="btn btn-o" onclick="go('auth')">Личный кабинет</button>
+  </div>
+  <div class="svcs">
+    <div class="card"><div class="ci">🇨🇳</div><h3>Китай → Россия</h3><p>Авто и авиа из Шанхая, Гуанчжоу, Шэньчжэня. Растаможка под ключ. 25–35 дней.</p></div>
+    <div class="card"><div class="ci">🌍</div><h3>Европа → Россия</h3><p>Автодоставка из Германии, Польши, Финляндии и других стран ЕС. 12–18 дней.</p></div>
+    <div class="card"><div class="ci">📦</div><h3>Любые грузы</h3><p>Генеральные, опасные, температурные, крупногабаритные. Полное сопровождение.</p></div>
+    <div class="card"><div class="ci">🛃</div><h3>Таможня под ключ</h3><p>Оформление документов, сертификация, экспортные декларации.</p></div>
+    <div class="card"><div class="ci">📡</div><h3>Онлайн-трекинг</h3><p>Следите за грузом в реальном времени через личный кабинет.</p></div>
+    <div class="card"><div class="ci">🤝</div><h3>Персональный менеджер</h3><p>Личный менеджер на каждой сделке. Работаем 7 дней в неделю.</p></div>
+  </div>
+  <footer>© 2025 Arleelines. Международная логистика.</footer>
+</div>
+
+<div id="pg-auth" class="page">
+  <div class="aw">
+    <div class="ac">
+      <div class="tabs">
+        <div class="tab active" id="ti" onclick="sw('in')">Войти</div>
+        <div class="tab" id="tu" onclick="sw('up')">Регистрация</div>
+      </div>
+      <div id="fi">
+        <div class="fg"><label>Email</label><input id="le" type="email" placeholder="you@company.com"></div>
+        <div class="fg"><label>Пароль</label><input id="lp" type="password" placeholder="••••••••"></div>
+        <div class="em" id="le2"></div>
+        <button class="btn bf" onclick="doIn()">Войти</button>
+      </div>
+      <div id="fu" style="display:none">
+        <div class="fg"><label>Имя</label><input id="rn" placeholder="Иван Иванов"></div>
+        <div class="fg"><label>Email</label><input id="re" type="email" placeholder="you@company.com"></div>
+        <div class="fg"><label>Телефон</label><input id="rph" placeholder="+7 999 123 45 67"></div>
+        <div class="fg"><label>Компания</label><input id="rc" placeholder="ООО Ромашка"></div>
+        <div class="fg"><label>Пароль</label><input id="rp" type="password" placeholder="Минимум 8 символов"></div>
+        <div class="em" id="ue2"></div>
+        <button class="btn bf" onclick="doUp()">Создать аккаунт</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="pg-dashboard" class="page">
+  <div class="dsh">
+    <div class="dh"><h2>Мои заказы</h2><span class="un" id="unn"></span></div>
+    <div id="ob" class="ld">Загрузка заказов...</div>
+  </div>
+</div>
+
+<div id="pg-calculator" class="page">
+  <div class="cw"><div class="cc">
+    <h2>🧮 Калькулятор доставки</h2>
+    <div class="fr">
+      <div class="fg"><label>Откуда</label><input id="co" placeholder="Шанхай, Берлин..."></div>
+      <div class="fg"><label>Куда</label><input id="cd" value="Москва"></div>
+    </div>
+    <div class="fr">
+      <div class="fg"><label>Вес (кг)</label><input id="cw2" type="number" placeholder="1000"></div>
+      <div class="fg"><label>Объём (м³)</label><input id="cv" type="number" placeholder="2.5" step="0.1"></div>
+    </div>
+    <div class="fg"><label>Тип груза</label>
+      <select id="ct">
+        <option value="general">Обычный (×1.0)</option>
+        <option value="fragile">Хрупкий (×1.2)</option>
+        <option value="temperature">Температурный (×1.5)</option>
+        <option value="oversized">Негабаритный (×1.4)</option>
+        <option value="dangerous">Опасный (×1.8)</option>
+        <option value="documents">Документы (×0.5)</option>
+      </select>
+    </div>
+    <button class="btn bf" onclick="doCalc()">Рассчитать</button>
+    <div id="cr" class="res">
+      <div id="rcc" class="rm"></div>
+      <div id="rcd" class="rd"></div>
+      <p style="color:var(--g);font-size:11px;margin-top:10px">⚠ Предварительный расчёт. Уточняйте у менеджера.</p>
+    </div>
+  </div></div>
+</div>
+
+<div id="pg-news" class="page">
+  <div class="nw">
+    <h2>📰 Новости</h2>
+    <div id="nb" class="ld">Загрузка новостей...</div>
+  </div>
+</div>
+
+<script>
+const API="https://arleelines-backend.vercel.app";
+let tok=localStorage.getItem("arl_t");
+function go(p){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById("pg-"+p).classList.add("active");if(p==="dashboard")loadO();if(p==="news")loadN();}
+function nav(){const ok=!!tok;document.getElementById("al").style.display=ok?"none":"";document.getElementById("ac2").style.display=ok?"":"none";document.getElementById("ao").style.display=ok?"":"none";}
+function sw(t){document.getElementById("fi").style.display=t==="in"?"":"none";document.getElementById("fu").style.display=t==="up"?"":"none";document.getElementById("ti").className="tab"+(t==="in"?" active":"");document.getElementById("tu").className="tab"+(t==="up"?" active":"");}
+async function doIn(){const e=document.getElementById("le").value,p=document.getElementById("lp").value,el=document.getElementById("le2");try{const r=await fetch(API+"/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:e,password:p})});const d=await r.json();if(!r.ok){el.style.display="block";el.textContent=d.detail||"Ошибка входа";return;}tok=d.token;localStorage.setItem("arl_t",tok);localStorage.setItem("arl_u",JSON.stringify(d.user));nav();go("dashboard");}catch(ex){el.style.display="block";el.textContent="Ошибка соединения";}}
+async function doUp(){const n=document.getElementById("rn").value,e=document.getElementById("re").value,ph=document.getElementById("rph").value,c=document.getElementById("rc").value,p=document.getElementById("rp").value,el=document.getElementById("ue2");try{const r=await fetch(API+"/auth/register",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({name:n,email:e,phone:ph,company:c,password:p})});const d=await r.json();if(!r.ok){el.style.display="block";el.textContent=d.detail||"Ошибка регистрации";return;}tok=d.token;localStorage.setItem("arl_t",tok);localStorage.setItem("arl_u",JSON.stringify(d.user));nav();go("dashboard");}catch(ex){el.style.display="block";el.textContent="Ошибка соединения";}}
+function doOut(){tok=null;localStorage.removeItem("arl_t");localStorage.removeItem("arl_u");nav();go("landing");}
+async function loadO(){const el=document.getElementById("ob"),u=JSON.parse(localStorage.getItem("arl_u")||"{}");document.getElementById("unn").textContent=u.name||"";if(!tok){go("auth");return;}el.innerHTML="Загрузка...";try{const r=await fetch(API+"/orders/my",{headers:{"Authorization":"Bearer "+tok}});const d=await r.json();if(!r.ok||!d.orders||!d.orders.length){el.innerHTML='<div class="emp"><div class="ei">📦</div><p>Заказов пока нет.<br>Свяжитесь с менеджером.</p></div>';return;}el.innerHTML=d.orders.map(o=>`<div class="oc"><div><div class="ot">${o.title||"Заказ #"+o.id}</div><div class="os">${o.created_at?new Date(o.created_at).toLocaleDateString("ru"):""}</div></div><div style="text-align:right"><span class="badge bb">${o.status}</span>${o.amount?`<div class="am">${parseFloat(o.amount).toLocaleString()} ${o.currency}</div>`:""}</div></div>`).join("");}catch(ex){el.innerHTML='<div class="emp"><p>Ошибка загрузки</p></div>';}}
+async function doCalc(){const o=document.getElementById("co").value,d=document.getElementById("cd").value,w=parseFloat(document.getElementById("cw2").value)||0,v=parseFloat(document.getElementById("cv").value)||0,t=document.getElementById("ct").value;try{const r=await fetch(API+"/calculator/estimate",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({origin:o,destination:d,weight:w,volume:v,cargo_type:t})});const data=await r.json();document.getElementById("rcc").textContent=parseFloat(data.estimated_cost).toLocaleString()+" "+data.currency;document.getElementById("rcd").innerHTML="🕐 Срок: "+data.transit_days+"&nbsp;&nbsp;&nbsp;⚖️ Расч. вес: "+data.effective_weight_kg+" кг";document.getElementById("cr").style.display="block";}catch(ex){alert("Ошибка соединения");}}
+async function loadN(){const el=document.getElementById("nb");el.innerHTML="Загрузка...";try{const r=await fetch(API+"/news?limit=12");const d=await r.json();if(!d.news||!d.news.length){el.innerHTML='<div class="emp"><p>Новостей пока нет</p></div>';return;}el.innerHTML='<div class="ng">'+d.news.map(n=>`<div class="nc"><div class="nd">${n.published_at?new Date(n.published_at).toLocaleDateString("ru",{day:"numeric",month:"long",year:"numeric"}):""}</div><h3>${n.title||"Новость"}</h3><p>${(n.content||"").substring(0,140)}...</p></div>`).join("")+"</div>";}catch(ex){el.innerHTML='<div class="emp"><p>Ошибка загрузки</p></div>';}}
+nav();
+</script>
+</body>
+</html>
